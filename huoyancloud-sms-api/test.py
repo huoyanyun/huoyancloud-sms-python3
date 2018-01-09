@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from huoyansdk.sms import SmsClient
+from sms import SmsClient
 
 # 请将参数替换成自己的
 client = SmsClient(access_key_id="access_key_id", access_key_secret="access_key_secret")
