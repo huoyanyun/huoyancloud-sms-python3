@@ -22,8 +22,8 @@ class HyApiException(Exception):
 
 class SmsClient(object):
 
-    def __init__(self, access_key_id, access_key_secret, model="sms"):
-        self.domain = 'b.dev.huoyancloud.com/api/{}/'.format(model)
+    def __init__(self, access_key_id, access_key_secret, model="sms", api_url="b.huoyancloud.com/api"):
+        self.domain = '{}/{}/'.format(api_url, model)
         self.ACCESS_KEY_ID = access_key_id
         self.ACCESS_KEY_SECRET = access_key_secret
 
@@ -50,7 +50,6 @@ class SmsClient(object):
             sorted_query_string_temp.append(
                 "{}={}&".format(quote(k), quote(v)))
         sorted_query_string_temp = "".join(sorted_query_string_temp)
-        # sorted_query_string_temp = quote(sorted_query_string_temp)
         string_to_sign = sorted_query_string_temp + access_key_secret
         sign = self.sha1(string_to_sign)
         schema = "http"
