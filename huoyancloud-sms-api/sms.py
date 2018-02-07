@@ -2,7 +2,7 @@
 
 import json
 from collections import OrderedDict
-from urllib.parse import quote
+from urllib.parse import quote_plus
 import hashlib
 import time
 import uuid
@@ -48,7 +48,7 @@ class SmsClient(object):
         sorted_query_string_temp = list()
         for k, v in parameters.items():
             sorted_query_string_temp.append(
-                "{}={}&".format(quote(k), quote(v)))
+                "{}={}&".format(quote_plus(k), quote_plus(v)))
         sorted_query_string_temp = "".join(sorted_query_string_temp)
         string_to_sign = sorted_query_string_temp + access_key_secret
         sign = self.sha1(string_to_sign)
